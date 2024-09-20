@@ -1,0 +1,73 @@
+.nutrient-card {
+  background-color: var(--background-color-light);
+  width: 230px;
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+
+  &-icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+
+    &--calories {
+      background-color: rgba(255, 0, 0, 0.06);
+    }
+
+    &--proteins {
+      background-color: rgba(74, 184, 255, 0.1);
+    }
+
+    &--carbohydrates {
+      background-color: rgba(249, 206, 35, 0.1);
+    }
+
+    &--lipids {
+      background-color: rgba(253, 81, 129, 0.1);
+    }
+  }
+
+  &-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+    margin-left: 24px;
+  }
+
+  &-quantity {
+    color: var(--text-color-dark-2);
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: var(--font-size-20);
+    font-weight: 700;
+  }
+
+  &-name {
+    color: var(--text-color-light-2);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: var(--font-size-14);
+    font-weight: 500;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 258px;
+    height: 124px;
+
+    &-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    &-information {
+      height: 60px;
+    }
+  }
+}

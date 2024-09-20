@@ -1,0 +1,31 @@
+.average-sessions-chart {
+  background-color: var(--primary-color-light);
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &-title {
+    color: var(--text-color-light-1);
+    width: 147px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: var(--font-size-15);
+    opacity: 0.6;
+
+    @media screen and (min-width: 1200px) {
+      top: 30px;
+      left: 30px;
+    }
+  }
+
+  &-custom-tooltip {
+    background-color: var(--background-color);
+    width: 40px;
+    height: 25px;
+    font-size: var(--font-size-8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

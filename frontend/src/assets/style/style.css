@@ -1,0 +1,357 @@
+@import-normalize;
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #ff0101;
+  --primary-color-light: #ff0000;
+  --primary-color-dark: #e60000;
+  --background-color: #ffffff;
+  --background-color-light: #fbfbfb;
+  --background-color-light-2: rgba(196, 196, 196, 0.5);
+  --background-color-dark: #020203;
+  --background-color-dark-2: #282d30;
+  --text-color-light-1: #ffffff;
+  --text-color-light-2: #74798c;
+  --text-color-dark-1: #20253a;
+  --text-color-dark-2: #282d30;
+  --font-size-8: 0.5rem;
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-15: 0.9375rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-26: 1.625rem;
+  --font-size-48: 3rem;
+  --font-family: "roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  background-color: var(--background-color-dark);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.header-logo {
+  width: 178px;
+}
+.header-navbar {
+  width: 70%;
+}
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.header-nav-item {
+  list-style: none;
+}
+.header-nav-link {
+  color: var(--text-color-light-1);
+  text-decoration: none;
+  font-size: var(--font-size-24);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 117px;
+  height: calc(100vh - 95px);
+  background-color: var(--background-color-dark);
+}
+.sidebar-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 316px;
+}
+.sidebar-icon {
+  background-color: var(--background-color-light);
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar-copyright {
+  width: 150px;
+  color: var(--text-color-light-1);
+  transform: rotate(-90deg);
+  font-size: var(--font-size-12);
+}
+
+.average-sessions-chart {
+  background-color: var(--primary-color-light);
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.average-sessions-chart-title {
+  color: var(--text-color-light-1);
+  width: 147px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: var(--font-size-15);
+  opacity: 0.6;
+}
+@media screen and (min-width: 1200px) {
+  .average-sessions-chart-title {
+    top: 30px;
+    left: 30px;
+  }
+}
+.average-sessions-chart-custom-tooltip {
+  background-color: var(--background-color);
+  width: 40px;
+  height: 25px;
+  font-size: var(--font-size-8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daily-activity-chart {
+  background-color: var(--background-color-light);
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: 5px;
+}
+.daily-activity-chart-title {
+  color: var(--text-color-dark-1);
+  position: absolute;
+  left: 30px;
+  top: 24px;
+  font-size: var(--font-size-15);
+}
+.daily-activity-chart-custom-tooltip {
+  background-color: var(--primary-color);
+  color: var(--text-color-light-1);
+  margin-left: 10px;
+  width: 39px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-8);
+  font-weight: 500;
+}
+
+.goal-chart {
+  background-color: var(--background-color-light);
+  position: relative;
+  border-radius: 5px;
+}
+.goal-chart-title {
+  color: var(--text-color-dark-1);
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: var(--font-size-15);
+  font-weight: 500;
+}
+@media screen and (min-width: 1200px) {
+  .goal-chart-title {
+    top: 24px;
+    left: 30px;
+  }
+}
+.goal-chart-legend {
+  color: var(--text-color-light-2);
+  text-align: center;
+  font-size: var(--font-size-14);
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 20px;
+}
+@media screen and (min-width: 1200px) {
+  .goal-chart-legend {
+    font-size: var(--font-size-16);
+    line-height: 26px;
+  }
+}
+.goal-chart-percentage {
+  color: var(--text-color-dark-1);
+  font-size: var(--font-size-20);
+  font-weight: 700;
+}
+@media screen and (min-width: 1200px) {
+  .goal-chart-percentage {
+    font-size: var(--font-size-26);
+  }
+}
+
+.nutrient-card {
+  background-color: var(--background-color-light);
+  width: 230px;
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+}
+.nutrient-card-icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+.nutrient-card-icon--calories {
+  background-color: rgba(255, 0, 0, 0.06);
+}
+.nutrient-card-icon--proteins {
+  background-color: rgba(74, 184, 255, 0.1);
+}
+.nutrient-card-icon--carbohydrates {
+  background-color: rgba(249, 206, 35, 0.1);
+}
+.nutrient-card-icon--lipids {
+  background-color: rgba(253, 81, 129, 0.1);
+}
+.nutrient-card-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
+  margin-left: 24px;
+}
+.nutrient-card-quantity {
+  color: var(--text-color-dark-2);
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: var(--font-size-20);
+  font-weight: 700;
+}
+.nutrient-card-name {
+  color: var(--text-color-light-2);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: var(--font-size-14);
+  font-weight: 500;
+}
+@media screen and (min-width: 1200px) {
+  .nutrient-card {
+    width: 258px;
+    height: 124px;
+  }
+  .nutrient-card-icon {
+    width: 60px;
+    height: 60px;
+  }
+  .nutrient-card-information {
+    height: 60px;
+  }
+}
+
+.performance-chart {
+  background-color: var(--text-color-dark-2);
+  position: relative;
+  border-radius: 5px;
+}
+
+.dashboard {
+  position: relative;
+  width: calc(100vw - 117px);
+  padding: 2% 5% 0 5%;
+}
+.dashboard-header .greeting {
+  font-size: var(--font-size-48);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.dashboard-header .firstname {
+  color: var(--primary-color);
+}
+.dashboard-header .motivational-speech {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+@media screen and (min-width: 1200px) {
+  .dashboard-header .motivational-speech {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+.dashboard-content {
+  display: flex;
+  position: relative;
+}
+.dashboard-charts {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.dashboard-row {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-row:first-child {
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 1200px) {
+  .dashboard-row:first-child {
+    margin-bottom: 30px;
+  }
+}
+.dashboard-nutrients {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 30px;
+  width: 30%;
+}
+
+.chart-item {
+  width: 30%;
+  aspect-ratio: 1/1;
+}
+@media screen and (min-width: 1200px) {
+  .chart-item {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 117px);
+}
+.error a {
+  color: var(--primary-color);
+}/*# sourceMappingURL=style.css.map */

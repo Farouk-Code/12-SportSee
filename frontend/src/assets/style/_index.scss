@@ -1,0 +1,46 @@
+@import-normalize;
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #ff0101;
+  --primary-color-light: #ff0000;
+  --primary-color-dark: #e60000;
+
+  --background-color: #ffffff;
+  --background-color-light: #fbfbfb;
+  --background-color-light-2: rgba(196, 196, 196, 0.5);
+  --background-color-dark: #020203;
+  --background-color-dark-2: #282d30;
+
+  --text-color-light-1: #ffffff;
+  --text-color-light-2: #74798c;
+  --text-color-dark-1: #20253a;
+  --text-color-dark-2: #282d30;
+
+  --font-size-8: 0.5rem;
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-15: 0.9375rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-26: 1.625rem;
+  --font-size-48: 3rem;
+
+  --font-family: "roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}

@@ -1,0 +1,44 @@
+.goal-chart {
+  background-color: var(--background-color-light);
+  position: relative;
+  border-radius: 5px;
+
+  &-title {
+    color: var(--text-color-dark-1);
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: var(--font-size-15);
+    font-weight: 500;
+
+    @media screen and (min-width: 1200px) {
+      top: 24px;
+      left: 30px;
+    }
+  }
+
+  &-legend {
+    color: var(--text-color-light-2);
+    text-align: center;
+    font-size: var(--font-size-14);
+    font-weight: 500;
+    line-height: 20px;
+    margin-top: 20px;
+
+    @media screen and (min-width: 1200px) {
+      font-size: var(--font-size-16);
+      line-height: 26px;
+    }
+  }
+
+  &-percentage {
+    color: var(--text-color-dark-1);
+    font-size: var(--font-size-20);
+    font-weight: 700;
+
+    @media screen and (min-width: 1200px) {
+      font-size: var(--font-size-26);
+    }
+  }
+}
