@@ -10,6 +10,16 @@ const translatedKindText = {
   6: "Intensity",
 };
 
+/**
+ * Fonction utilitaire pour formater les données de performance.
+ *
+ * Cette fonction prend les données brutes et traduit les identifiants des catégories de performance
+ * (par exemple, 1 = "Cardio") en texte lisible.
+ *
+ * @param {Object} data - Les données brutes de performance de l'utilisateur.
+ * @param {Object[]} data.data - Tableau des performances par catégorie.
+ * @returns {Object[]} Les données formatées avec des noms de catégories traduits.
+ */
 const formatPerformance = (data) => {
   return data.data.map((d) => ({
     ...d,
@@ -17,6 +27,21 @@ const formatPerformance = (data) => {
   }));
 };
 
+/**
+ * Composant de graphique de performance (PerformanceChart).
+ *
+ * Ce composant affiche un graphique radar représentant la performance de l'utilisateur
+ * dans différentes catégories, telles que le cardio, l'énergie, l'endurance, etc.
+ * Les données sont formatées pour afficher des noms de catégories traduits.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object} props.data - Les données de performance de l'utilisateur.
+ * @param {Object[]} props.data.data - Tableau des performances par catégorie.
+ * @param {number} props.data.data[].kind - L'identifiant numérique de la catégorie de performance (1 à 6).
+ * @param {number} props.data.data[].value - La valeur de la performance pour cette catégorie.
+ *
+ * @returns {JSX.Element} Le composant PerformanceChart.
+ */
 function PerformanceChart({ data }) {
   const formattedData = formatPerformance(data);
 
@@ -46,6 +71,7 @@ function PerformanceChart({ data }) {
   );
 }
 
+// Déclaration des propTypes pour la validation des types des props
 PerformanceChart.propTypes = {
   data: PropTypes.object,
 };

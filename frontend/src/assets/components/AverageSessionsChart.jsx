@@ -1,6 +1,18 @@
 import PropTypes from "prop-types";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Rectangle } from "recharts";
 
+/**
+ * Tooltip personnalisé pour le graphique.
+ *
+ * Ce composant est utilisé pour afficher un tooltip contenant la durée de la session
+ * en minutes lorsque l'utilisateur survole un point du graphique.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {boolean} props.active - Indique si le tooltip est actif (visible).
+ * @param {Object[]} props.payload - Les données transmises au tooltip depuis le graphique.
+ *
+ * @returns {JSX.Element|null} Le contenu du tooltip ou null s'il n'est pas actif.
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -12,11 +24,38 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+/**
+ * Curseur personnalisé pour le graphique.
+ *
+ * Ce composant est utilisé pour afficher un rectangle semi-transparent en tant que curseur
+ * lors du survol du graphique.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object[]} props.points - Tableau des points de données sur l'axe des X.
+ * @param {number} props.width - La largeur du curseur.
+ * @param {number} props.height - La hauteur du curseur.
+ *
+ * @returns {JSX.Element} Le curseur personnalisé (rectangle).
+ */
 const CustomCursor = ({ points, width }) => {
   const { x } = points[0];
   return <Rectangle fill="hsla(0, 0%, 0%, 9.75%)" x={x} width={width} height={300} />;
 };
 
+/**
+ * Composant de graphique des sessions moyennes.
+ *
+ * Ce composant affiche un graphique en courbes représentant la durée moyenne des sessions
+ * pour chaque jour de la semaine. Le graphique est responsive et contient un tooltip personnalisé
+ * ainsi qu'un curseur personnalisé.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object} props.data - Les données de sessions, incluant un tableau d'objets avec la longueur des sessions.
+ * @param {Object[]} props.data.sessions - Tableau contenant les sessions.
+ * @param {number} props.data.sessions[].sessionLength - La durée de chaque session en minutes.
+ *
+ * @returns {JSX.Element} Le composant AverageSessionsChart.
+ */
 function AverageSessionsChart({ data }) {
   const weekDays = ["L", "M", "T", "W", "T", "F", "S"];
   const formattedData = data.sessions.map((session, index) => ({
@@ -67,6 +106,7 @@ function AverageSessionsChart({ data }) {
   );
 }
 
+// Déclaration des propTypes pour la validation des types des props
 AverageSessionsChart.propTypes = {
   data: PropTypes.object,
 };

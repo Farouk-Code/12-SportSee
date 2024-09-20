@@ -3,6 +3,14 @@ import swinIcon from "/app-icons/icon-swim.svg";
 import bicycleIcon from "/app-icons/icon-bicycle.svg";
 import dumbbeleIcon from "/app-icons/icon-dumbbel.svg";
 
+/**
+ * Composant de barre latérale (Sidebar).
+ *
+ * Ce composant affiche une barre latérale contenant des icônes d'activités sportives,
+ * telles que le yoga, la natation, le vélo et les haltères. Il inclut également un texte de copyright.
+ *
+ * @returns {JSX.Element} Le composant Sidebar.
+ */
 function Sidebar() {
   return (
     <div className="sidebar">

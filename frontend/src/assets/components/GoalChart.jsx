@@ -1,6 +1,17 @@
 import PropTypes from "prop-types";
 import { ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 
+/**
+ * Légende personnalisée pour le graphique.
+ *
+ * Ce composant affiche un texte personnalisé qui montre le pourcentage de progression
+ * de l'utilisateur par rapport à son objectif.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {number} props.progression - Le pourcentage de progression de l'utilisateur (exprimé sous forme de nombre entre 0 et 1).
+ *
+ * @returns {JSX.Element} Le composant de légende personnalisé.
+ */
 const CustomizedLegend = ({ progression }) => {
   return (
     <div className="goal-chart-legend">
@@ -15,6 +26,20 @@ const CustomizedLegend = ({ progression }) => {
   );
 };
 
+/**
+ * Composant de graphique d'objectif (GoalChart).
+ *
+ * Ce composant affiche un graphique en secteurs représentant la progression d'un utilisateur
+ * par rapport à son objectif quotidien ou global. Il utilise un diagramme en anneau (PieChart)
+ * pour illustrer la partie atteinte de l'objectif et celle restante.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object} props.data - Les données contenant le score de progression.
+ * @param {number} props.data.score - Le score actuel de l'utilisateur (facultatif, utilisé si `todayScore` n'est pas disponible).
+ * @param {number} props.data.todayScore - Le score du jour de l'utilisateur (facultatif, utilisé si `score` n'est pas disponible).
+ *
+ * @returns {JSX.Element} Le composant GoalChart.
+ */
 function GoalChart({ data }) {
   const progression = data.score ?? data.todayScore;
   const remainsToBeDone = 1 - progression;
@@ -63,6 +88,7 @@ function GoalChart({ data }) {
   );
 }
 
+// Déclaration des propTypes pour la validation des types des props
 GoalChart.propTypes = {
   data: PropTypes.object,
 };
