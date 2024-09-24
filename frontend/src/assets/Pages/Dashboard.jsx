@@ -49,7 +49,7 @@ function Dashboard() {
   }, [userId, source]);
 
   if (!userData) {
-    return <div>Utilisateur non trouvé.</div>;
+    return <div className="no-user">Utilisateur non trouvé...</div>;
   }
 
   return (

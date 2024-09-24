@@ -1,4 +1,15 @@
 .main-content {
   display: flex;
   flex-direction: row;
+
+  .no-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    height: 100vh;
+    font-size: 2em;
+  }
 }
