@@ -41,7 +41,7 @@ function Dashboard() {
         setUserPerformance(userPerf);
       } catch (error) {
         console.error(error);
-        // throw error;
+        throw error;
       }
     };
 
