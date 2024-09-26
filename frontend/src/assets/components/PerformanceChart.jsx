@@ -1,31 +1,31 @@
 import PropTypes from "prop-types";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
 
-const translatedKindText = {
-  1: "Cardio",
-  2: "Energy",
-  3: "Endurance",
-  4: "Strength",
-  5: "Speed",
-  6: "Intensity",
-};
+// const translatedKindText = {
+//   1: "Cardio",
+//   2: "Energy",
+//   3: "Endurance",
+//   4: "Strength",
+//   5: "Speed",
+//   6: "Intensity",
+// };
 
-/**
- * Fonction utilitaire pour formater les données de performance.
- *
- * Cette fonction prend les données brutes et traduit les identifiants des catégories de performance
- * (par exemple, 1 = "Cardio") en texte lisible.
- *
- * @param {Object} data - Les données brutes de performance de l'utilisateur.
- * @param {Object[]} data.data - Tableau des performances par catégorie.
- * @returns {Object[]} Les données formatées avec des noms de catégories traduits.
- */
-const formatPerformance = (data) => {
-  return data.data.map((d) => ({
-    ...d,
-    kind: translatedKindText[d.kind],
-  }));
-};
+// /**
+//  * Fonction utilitaire pour formater les données de performance.
+//  *
+//  * Cette fonction prend les données brutes et traduit les identifiants des catégories de performance
+//  * (par exemple, 1 = "Cardio") en texte lisible.
+//  *
+//  * @param {Object} data - Les données brutes de performance de l'utilisateur.
+//  * @param {Object[]} data.data - Tableau des performances par catégorie.
+//  * @returns {Object[]} Les données formatées avec des noms de catégories traduits.
+//  */
+// const formatPerformance = (data) => {
+//   return data.data.map((d) => ({
+//     ...d,
+//     kind: translatedKindText[d.kind],
+//   }));
+// };
 
 /**
  * Composant de graphique de performance (PerformanceChart).
@@ -43,13 +43,11 @@ const formatPerformance = (data) => {
  * @returns {JSX.Element} Le composant PerformanceChart.
  */
 function PerformanceChart({ data }) {
-  const formattedData = formatPerformance(data);
-
   return (
     <div className="performance-chart chart-item">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart
-          data={formattedData}
+          data={data.data}
           fill="#FFFFFF"
           outerRadius={"50%"}
           startAngle={30}
@@ -73,7 +71,14 @@ function PerformanceChart({ data }) {
 
 // Déclaration des propTypes pour la validation des types des props
 PerformanceChart.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number,
+        kind: PropTypes.string,
+      })
+    ),
+  }),
 };
 
 export default PerformanceChart;

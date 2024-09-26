@@ -1,3 +1,5 @@
+import { UserData, UserActivity, UserAverageSessions } from "../data-formatter/dataFormatter";
+
 const BASE_URL = "http://localhost:3000/user/";
 
 /**
@@ -28,30 +30,33 @@ const fetchData = async (endpoint) => {
  * Récupère les données de l'utilisateur.
  *
  * @param {string} userId L'ID de l'utilisateur.
- * @returns {Promise<Object>} Une promesse qui résout avec les données de l'utilisateur.
+ * @returns {Promise<UserData>} Une promesse qui résout avec une instance de UserData.
  */
 export const getUserData = async (userId) => {
-  return fetchData(`${userId}/`);
+  const data = await fetchData(`${userId}/`);
+  return new UserData(data);
 };
 
 /**
  * Récupère les données d'activité de l'utilisateur.
  *
  * @param {string} userId L'ID de l'utilisateur.
- * @returns {Promise<Object>} Une promesse qui résout avec les données d'activité.
+ * @returns {Promise<UserActivity>} Une promesse qui résout avec une instance de UserActivity.
  */
 export const getUserActivity = async (userId) => {
-  return fetchData(`${userId}/activity`);
+  const data = await fetchData(`${userId}/activity`);
+  return new UserActivity(data);
 };
 
 /**
  * Récupère les données des sessions moyennes de l'utilisateur.
  *
  * @param {string} userId L'ID de l'utilisateur.
- * @returns {Promise<Object>} Une promesse qui résout avec les données des sessions moyennes.
+ * @returns {Promise<UserAverageSessions>} Une promesse qui résout avec une instance de UserAverageSessions.
  */
 export const getUserAverageSessions = async (userId) => {
-  return fetchData(`${userId}/average-sessions`);
+  const data = await fetchData(`${userId}/average-sessions`);
+  return new UserAverageSessions(data);
 };
 
 /**

@@ -57,18 +57,12 @@ const CustomCursor = ({ points, width }) => {
  * @returns {JSX.Element} Le composant AverageSessionsChart.
  */
 function AverageSessionsChart({ data }) {
-  const weekDays = ["L", "M", "T", "W", "T", "F", "S"];
-  const formattedData = data.sessions.map((session, index) => ({
-    day: weekDays[index],
-    sessionLength: session.sessionLength,
-  }));
-
   return (
     <div className="average-sessions-chart chart-item">
       <div className="average-sessions-chart-title">Durée moyenne des sessions</div>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={formattedData}
+          data={data.sessions}
           margin={{
             left: 0,
             top: 20,
@@ -108,7 +102,14 @@ function AverageSessionsChart({ data }) {
 
 // Déclaration des propTypes pour la validation des types des props
 AverageSessionsChart.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    sessions: PropTypes.arrayOf(
+      PropTypes.shape({
+        day: PropTypes.string,
+        sessionLength: PropTypes.number,
+      })
+    ),
+  }),
 };
 
 CustomTooltip.propTypes = {

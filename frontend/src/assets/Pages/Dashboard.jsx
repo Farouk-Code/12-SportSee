@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { SourceContext } from "../context/context";
+import { UserData, UserActivity, UserAverageSessions, UserPerformance } from "../data-formatter/dataFormatter";
 import Greeting from "../components/Greeting";
 import DailyActivityChart from "../components/DailyActivityChart";
 import AverageSessionsChart from "../components/AverageSessionsChart";
@@ -24,6 +25,7 @@ function Dashboard() {
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const { userId } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,13 +37,14 @@ function Dashboard() {
           source.getUserPerformance(userId),
         ]);
 
-        setUserData(userData);
-        setUserActivity(userActivities);
-        setUserAverageSessions(userSessions);
-        setUserPerformance(userPerf);
+        setUserData(new UserData(userData));
+        setUserActivity(new UserActivity(userActivities));
+        setUserAverageSessions(new UserAverageSessions(userSessions));
+        setUserPerformance(new UserPerformance(userPerf));
       } catch (error) {
         console.error(error);
-        throw error;
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -49,17 +52,23 @@ function Dashboard() {
   }, [userId, source]);
 
   if (!userData) {
-    return <div className="no-user">Utilisateur non trouvé...</div>;
+    return <div className="no-user">Serveur non disponible...</div>;
+  }
+
+  if (isLoading) {
+    return <div>Chargement...</div>;
   }
 
   return (
     <main className="dashboard">
-      <div className="dashboard-header">
-        <Greeting
-          firstName={userData.userInfos.firstName}
-          motivationalSpeech="Félicitations ! Vous avez explosé vos objectifs hier 👏"
-        />
-      </div>
+      {userData && (
+        <div className="dashboard-header">
+          <Greeting
+            firstName={userData.firstName}
+            motivationalSpeech="Félicitations ! Vous avez explosé vos objectifs hier 👏"
+          />
+        </div>
+      )}
       <div className="dashboard-content">
         <div className="dashboard-charts">
           <div className="dashboard-row">{userActivity && <DailyActivityChart data={userActivity} />}</div>
@@ -70,30 +79,34 @@ function Dashboard() {
           </div>
         </div>
         <div className="dashboard-nutrients">
-          <NutrientCard
-            data={userData.keyData.calorieCount}
-            name="Calories"
-            iconClassName="nutrient-card-icon--calories"
-            icon={iconCalories}
-          />
-          <NutrientCard
-            data={userData.keyData.proteinCount}
-            name="Proteines"
-            iconClassName="nutrient-card-icon--proteins"
-            icon={iconProteins}
-          />
-          <NutrientCard
-            data={userData.keyData.carbohydrateCount}
-            name="Glucides"
-            iconClassName="nutrient-card-icon--carbohydrates"
-            icon={iconCarbohydrates}
-          />
-          <NutrientCard
-            data={userData.keyData.lipidCount}
-            name="Lipides"
-            iconClassName="nutrient-card-icon--lipids"
-            icon={iconLipids}
-          />
+          {userData && (
+            <>
+              <NutrientCard
+                data={userData.keyData.calorieCount}
+                name="Calories"
+                iconClassName="nutrient-card-icon--calories"
+                icon={iconCalories}
+              />
+              <NutrientCard
+                data={userData.keyData.proteinCount}
+                name="Proteines"
+                iconClassName="nutrient-card-icon--proteins"
+                icon={iconProteins}
+              />
+              <NutrientCard
+                data={userData.keyData.carbohydrateCount}
+                name="Glucides"
+                iconClassName="nutrient-card-icon--carbohydrates"
+                icon={iconCarbohydrates}
+              />
+              <NutrientCard
+                data={userData.keyData.lipidCount}
+                name="Lipides"
+                iconClassName="nutrient-card-icon--lipids"
+                icon={iconLipids}
+              />
+            </>
+          )}
         </div>
       </div>
     </main>

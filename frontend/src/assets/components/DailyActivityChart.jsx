@@ -25,17 +25,17 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-/**
- * Fonction utilitaire pour formater un jour à partir d'une date.
- *
- * Cette fonction extrait le jour du mois à partir d'une chaîne de date et le retourne sous forme de nombre.
- *
- * @param {string} date - La chaîne de date à formater.
- * @returns {number} Le jour du mois extrait de la date.
- */
-const formatDay = (date) => {
-  return new Date(date).getDate();
-};
+// /**
+//  * Fonction utilitaire pour formater un jour à partir d'une date.
+//  *
+//  * Cette fonction extrait le jour du mois à partir d'une chaîne de date et le retourne sous forme de nombre.
+//  *
+//  * @param {string} date - La chaîne de date à formater.
+//  * @returns {number} Le jour du mois extrait de la date.
+//  */
+// const formatDay = (date) => {
+//   return new Date(date).getDate();
+// };
 
 /**
  * Composant de graphique de l'activité journalière.
@@ -72,16 +72,11 @@ function DailyActivityChart({ data }) {
           <CartesianGrid strokeDasharray="3 3" vertical="" />
           <XAxis
             dataKey="day"
-            tickFormatter={formatDay}
             tickLine={false}
             tickMargin={16}
-            tick={{
-              stroke: "#9B9EAC",
-              fontSize: 14,
-              fontWeight: 500,
-            }}
+            tick={{ stroke: "#9B9EAC", fontSize: 14, fontWeight: 500 }}
           />
-          <YAxis axisLine={false} tickLine={false} orientation="right" />
+          <YAxis axisLine={false} tickLine={false} orientation="right" tick={{ stroke: "#9B9EAC" }} />
           <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: "none" }} />
           <Legend iconType="circle" iconSize={8} height={80} verticalAlign="top" align="right" />
           <Bar name="Poids (kg)" dataKey="kilogram" fill="#282D30" radius={[3.5, 3.5, 0, 0]} />
@@ -94,7 +89,15 @@ function DailyActivityChart({ data }) {
 
 // Déclaration des propTypes pour la validation des types des props
 DailyActivityChart.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.shape({
+    sessions: PropTypes.arrayOf(
+      PropTypes.shape({
+        day: PropTypes.number,
+        kilogram: PropTypes.number,
+        calories: PropTypes.number,
+      })
+    ),
+  }),
 };
 
 CustomTooltip.propTypes = {
