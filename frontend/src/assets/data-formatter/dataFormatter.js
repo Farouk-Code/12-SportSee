@@ -36,7 +36,7 @@ export class UserActivity {
   constructor(data) {
     this.userId = data.userId;
     this.sessions = data.sessions.map((session) => ({
-      day: new Date(session.day).getDate(),
+      day: new Date(session.day).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" }),
       kilogram: session.kilogram,
       calories: session.calories,
     }));

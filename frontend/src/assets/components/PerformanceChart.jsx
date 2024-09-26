@@ -1,32 +1,6 @@
 import PropTypes from "prop-types";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
 
-// const translatedKindText = {
-//   1: "Cardio",
-//   2: "Energy",
-//   3: "Endurance",
-//   4: "Strength",
-//   5: "Speed",
-//   6: "Intensity",
-// };
-
-// /**
-//  * Fonction utilitaire pour formater les données de performance.
-//  *
-//  * Cette fonction prend les données brutes et traduit les identifiants des catégories de performance
-//  * (par exemple, 1 = "Cardio") en texte lisible.
-//  *
-//  * @param {Object} data - Les données brutes de performance de l'utilisateur.
-//  * @param {Object[]} data.data - Tableau des performances par catégorie.
-//  * @returns {Object[]} Les données formatées avec des noms de catégories traduits.
-//  */
-// const formatPerformance = (data) => {
-//   return data.data.map((d) => ({
-//     ...d,
-//     kind: translatedKindText[d.kind],
-//   }));
-// };
-
 /**
  * Composant de graphique de performance (PerformanceChart).
  *

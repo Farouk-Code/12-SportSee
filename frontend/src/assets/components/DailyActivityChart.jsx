@@ -25,18 +25,6 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-// /**
-//  * Fonction utilitaire pour formater un jour à partir d'une date.
-//  *
-//  * Cette fonction extrait le jour du mois à partir d'une chaîne de date et le retourne sous forme de nombre.
-//  *
-//  * @param {string} date - La chaîne de date à formater.
-//  * @returns {number} Le jour du mois extrait de la date.
-//  */
-// const formatDay = (date) => {
-//   return new Date(date).getDate();
-// };
-
 /**
  * Composant de graphique de l'activité journalière.
  *
