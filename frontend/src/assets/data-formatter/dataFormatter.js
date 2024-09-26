@@ -12,7 +12,7 @@ export class UserData {
    */
   constructor(data) {
     this.id = data.id;
-    this.firstName = data.userInfos?.firstName || ""; // Utilisation de l'opérateur de chaînage optionnel
+    this.firstName = data.userInfos?.firstName || "";
     this.lastName = data.userInfos?.lastName || "";
     this.age = data.userInfos?.age || null;
     this.todayScore = data.todayScore || data.score || 0;
@@ -60,7 +60,20 @@ export class UserAverageSessions {
   }
 }
 
+/**
+ * Classe représentant les données de performance de l'utilisateur.
+ * Elle transforme les identifiants numériques des types de performance en libellés textuels.
+ */
 export class UserPerformance {
+  /**
+   * Crée une nouvelle instance de UserPerformance.
+   *
+   * @param {Object} data Les données brutes de performance de l'utilisateur.
+   * @param {number} data.userId L'ID de l'utilisateur.
+   * @param {Array<Object>} data.data Un tableau d'objets contenant les données de performance.
+   * @param {number} data.data[].kind L'identifiant numérique du type de performance (1 à 6).
+   * @param {number} data.data[].value La valeur de la performance pour ce type.
+   */
   constructor(data) {
     this.userId = data.userId;
     const kindMapping = {
